@@ -10,33 +10,26 @@ namespace EtteremProject.Models
 {
     public class RestaurantContext : DbContext
     {
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Meal> Meals { get; set; }
-        public DbSet<MealIngredient> MealIngredients { get; set; }
-        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Meals> Meals { get; set; }
+        public DbSet<MealIngredients> MealIngredients { get; set; }
+        public DbSet<Ingredients> Ingredients { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
-        public RestaurantContext(string connectionString)
-         : base(GetOptions(connectionString))
-        {
-        }
-
-        private static DbContextOptions<RestaurantContext> GetOptions(string connectionString)
-        {
-            return new DbContextOptionsBuilder<RestaurantContext>()
-                .UseSqlite(connectionString)
-                .Options;
-        }
-    }
-    public class Order
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+            optionsBuilder.UseSqlite("Data Source=restaurant.db");
+		}
+	}
+    public class Orders
     {
         [Key]
         public int Id { get; set; }
         public int UserId { get; set; }
     }
 
-    public class User
+    public class Users
     {
         [Key]
         public int Id { get; set; }
@@ -45,7 +38,7 @@ namespace EtteremProject.Models
         public string Password { get; set; }
     }
 
-    public class Meal
+    public class Meals
     {
         [Key]
         public int Id { get; set; }
@@ -55,7 +48,7 @@ namespace EtteremProject.Models
         public string ImageUrl { get; set; }
     }
 
-    public class MealIngredient
+    public class MealIngredients
     {
         [Key]
         public int Id { get; set; }
@@ -64,7 +57,7 @@ namespace EtteremProject.Models
         public int Quantity { get; set; }
     }
 
-    public class Ingredient
+    public class Ingredients
     {
         [Key]
         public int Id { get; set; }

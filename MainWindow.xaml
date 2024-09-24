@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <TextBox x:Name="txtUsername" />
+            <TextBox x:Name="txtPassword" />
+            <Button Content="Register" Click="RegisterButton_Click"/>
+            <Button Content="Login" Click="LoginButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

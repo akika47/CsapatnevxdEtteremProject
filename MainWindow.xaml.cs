@@ -70,7 +70,8 @@ namespace EtteremProject
 				var user = _context.Users.FirstOrDefault(u => u.Username == username);
 				if (user != null && VerifyPassword(password, user.Password))
 				{
-					//Success message later implement
+					Order orderWindow = new Order();
+					orderWindow.ShowDialog();
 				}
 				else
 				{
@@ -175,5 +176,39 @@ namespace EtteremProject
 			return inputHash.SequenceEqual(hash);
 		}
 
-	}
+        private void OpenRegisterContext(object sender, RoutedEventArgs e)
+        {
+			txtConfirmPassword.Visibility = Visibility.Visible;
+			lblConfirmPassword.Visibility = Visibility.Visible;
+
+			lblAlreadyHave.Visibility = Visibility.Visible;
+			btnAlreadyHave.Visibility = Visibility.Visible;
+
+			lblClickHere.Visibility = Visibility.Collapsed;
+			btnClickHere.Visibility = Visibility.Collapsed;
+
+			btnLogin.Visibility = Visibility.Collapsed;
+			btnRegister.Visibility = Visibility.Visible;
+
+			lblTitle.Content = "Register";
+
+        }
+
+        private void OpenLoginContext(object sender, RoutedEventArgs e)
+        {
+            txtConfirmPassword.Visibility = Visibility.Collapsed;
+            lblConfirmPassword.Visibility = Visibility.Collapsed;
+
+            lblAlreadyHave.Visibility = Visibility.Collapsed;
+            btnAlreadyHave.Visibility = Visibility.Collapsed;
+
+            lblClickHere.Visibility = Visibility.Visible;
+            btnClickHere.Visibility = Visibility.Visible;
+
+			btnRegister.Visibility= Visibility.Collapsed;
+			btnLogin.Visibility = Visibility.Visible;
+
+			lblTitle.Content = "Login";
+        }
+    }
 }

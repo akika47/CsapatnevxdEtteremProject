@@ -26,14 +26,14 @@
         <Label Name="lblTitle" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Content="Login"></Label>
 
         <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">Username</Label>
-        <TextBox x:Name="txtUsername" Grid.Row="2" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
+        <TextBox x:Name="txtUsername" VerticalContentAlignment="Center" GotFocus="RemoveErrorMarker" Grid.Row="2" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
 
         <Label Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">Password</Label>
-        <TextBox x:Name="txtPassword" Grid.Row="4" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
+        <TextBox x:Name="txtPassword" VerticalContentAlignment="Center" GotFocus="RemoveErrorMarker" Grid.Row="4" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
 
 
         <Label Name="lblConfirmPassword" Visibility="Collapsed" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">Confirm Password</Label>
-        <TextBox Visibility="Collapsed" x:Name="txtConfirmPassword" Grid.Row="6" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
+        <TextBox Visibility="Collapsed" VerticalContentAlignment="Center" GotFocus="RemoveErrorMarker" x:Name="txtConfirmPassword" Grid.Row="6" Background="LightGray" Width="200" Height="40" FontSize="15"></TextBox>
 
 
         <Button x:Name="btnLogin" Grid.Row="7" Height="40" Width="200" Click="LoginButton_Click" Content="Login"></Button>
@@ -45,7 +45,7 @@
         <Label Visibility="Collapsed" Name="lblAlreadyHave" Grid.Row="8" VerticalAlignment="Top" HorizontalAlignment="Center">Already have an account?</Label>
         <Button Visibility="Collapsed" x:Name="btnAlreadyHave" Click="OpenLoginContext" Grid.Row="8" Height="20" Width="100" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" Background="White" BorderThickness="0 0 0 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10">Click here</Button>
 
-            <Button Click="asd">OrderWindow (csak tesztkent)</Button>
+        <Button Click="asd">OrderWindow (csak tesztkent)</Button>
 
     </Grid>
     </Border>

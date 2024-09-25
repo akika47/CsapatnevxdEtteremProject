@@ -50,8 +50,9 @@ namespace EtteremProject
              * 
              */
             MainWindow ujMain = new MainWindow();
-            ujMain.ShowDialog();
             this.Close();
+            ujMain.ShowDialog();
+            
         }
 
         Dictionary<string, int> DishQunatitites = new Dictionary<string, int>();
@@ -83,7 +84,10 @@ namespace EtteremProject
             lbCart.Items.Clear();
             foreach (var item in DishQunatitites) {
                 if (item.Value != 0)
-                    lbCart.Items.Add($"{item.Key}\t \t {item.Value}");         
+                    lbCart.Items.Add($"{item.Key}\t \t{item.Value}");
+                else
+                    DishQunatitites.Remove(item.Key);
+                    
             }
       
 

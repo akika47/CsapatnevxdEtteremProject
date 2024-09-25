@@ -30,7 +30,7 @@
         
         <Button x:Name="btnLogin" Click="OpenLoginWindow" Grid.Column="3" Width="180" Height="80">Login</Button>
 
-        <ListBox x:Name="lbCart" FontSize="20" HorizontalContentAlignment="Center" Background="LightGray" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Margin="5">
+        <ListBox x:Name="lbCart" FontSize="20" Width="300" HorizontalContentAlignment="Center" Background="LightGray" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Margin="5">
             
         </ListBox>
         
@@ -41,7 +41,7 @@
             <!--IMAGE-->
         </Border>
         <Border Grid.Row="1" Background="LightGray" CornerRadius="10" BorderBrush="Black" Margin="0 0 0 15" BorderThickness="1" Height="40" Width="175" VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish1" Grid.Row="1" VerticalAlignment="center" Height="40" Width="175" Orientation="Horizontal">
+            <StackPanel x:Name="Dish1asdasdasd" Grid.Row="1" VerticalAlignment="center" Height="40" Width="175" Orientation="Horizontal">
                 <Button Click="IncreaseDecrease" Width="40" Height="40" FontSize="30" Content="-">
                     <Button.Resources>
                         <Style TargetType="Border">

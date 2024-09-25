@@ -194,7 +194,7 @@
 
         <Label FontSize="20" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">Valami footer</Label>
 
-        <Button x:Name="btnAdmin" Grid.Row="3" Height="55" Width="150" FontSize="20">Admin</Button>
+        <Button x:Name="btnAdmin" Visibility="Collapsed" Click="btnAdmin_Click" Grid.Row="3" Height="55" Width="150" FontSize="20">Admin</Button>
         <Button Grid.Column="3" Grid.Row="3" Height="55" Width="200" FontSize="20">Checkout</Button>
     </Grid>
 </Window>

@@ -18,7 +18,8 @@ namespace EtteremProject
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private RestaurantContext _context;
+        Order orderWindow = new Order();
+        private RestaurantContext _context;
 		private const int HashSize = 256;
 		public MainWindow(RestaurantContext context)
 		{
@@ -26,6 +27,12 @@ namespace EtteremProject
 
 			_context = context;
 		}
+
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
 		// Registration
 		private void RegisterButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -43,8 +50,10 @@ namespace EtteremProject
 				// Registration successful, redirect to login or main page...
 				foreach (var item in _context.Users)
 				{
-					MessageBox.Show($"{item.Username} {item.Password}");
-				}
+					//MessageBox.Show($"{item.Username} {item.Password}");
+                    this.Close();
+                    orderWindow.ShowDialog();
+                }
 
 			}
 			else
@@ -70,7 +79,7 @@ namespace EtteremProject
 				var user = _context.Users.FirstOrDefault(u => u.Username == username);
 				if (user != null && VerifyPassword(password, user.Password))
 				{
-					Order orderWindow = new Order();
+					this.Close();		
 					orderWindow.ShowDialog();
 				}
 				else
@@ -213,6 +222,7 @@ namespace EtteremProject
 
         private void asd(object sender, RoutedEventArgs e)
         {
+			this.Close();
 			Order newpage = new Order();
 			newpage.ShowDialog();
         }

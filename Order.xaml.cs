@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EtteremProject.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,32 @@ namespace EtteremProject
         public Order()
         {
             InitializeComponent();
+
+            //megnezni hogy admin-e a felhazsnalo
+            if (false)
+            {
+                btnAdmin.Visibility = Visibility.Visible;
+            }
         }
 
         private void OpenLoginWindow(object sender, RoutedEventArgs e)
         {
-
+            /*
+             * 
+             * 
+             * 
+             * 
+             * //RestaurantContext nelkul hivja meg nem biztos hogy jo
+             * 
+             * 
+             * 
+             * 
+             * 
+             * 
+             */
+            MainWindow ujMain = new MainWindow();
+            ujMain.ShowDialog();
+            this.Close();
         }
 
         private void IncreaseDecrease(object sender, RoutedEventArgs e)
@@ -44,6 +66,11 @@ namespace EtteremProject
             }
 
 
+
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

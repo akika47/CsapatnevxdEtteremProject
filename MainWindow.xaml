@@ -45,7 +45,7 @@
         <Label Visibility="Collapsed" Name="lblAlreadyHave" Grid.Row="8" VerticalAlignment="Top" HorizontalAlignment="Center">Already have an account?</Label>
         <Button Visibility="Collapsed" x:Name="btnAlreadyHave" Click="OpenLoginContext" Grid.Row="8" Height="20" Width="100" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" Background="White" BorderThickness="0 0 0 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10">Click here</Button>
 
-            <Button Click="asd">asd</Button>
+            <Button Click="asd">OrderWindow (csak tesztkent)</Button>
 
     </Grid>
     </Border>

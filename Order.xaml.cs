@@ -28,5 +28,23 @@ namespace EtteremProject
         {
 
         }
+
+        private void IncreaseDecrease(object sender, RoutedEventArgs e)
+        {
+            var gomb = sender as Button;
+            var xd = gomb.Parent as StackPanel;
+            var label = xd.Children[1] as Label;
+            if (gomb.Content.ToString() == "+")
+            {
+                label.Content = Convert.ToInt32(label.Content) + 1;
+            }
+            else if (gomb.Content.ToString() == "-" && label.Content.ToString() != "0")
+            {
+                label.Content = Convert.ToInt32(label.Content) - 1;
+            }
+
+
+
+        }
     }
 }

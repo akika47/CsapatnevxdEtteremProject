@@ -210,5 +210,11 @@ namespace EtteremProject
 
 			lblTitle.Content = "Login";
         }
+
+        private void asd(object sender, RoutedEventArgs e)
+        {
+			Order newpage = new Order();
+			newpage.ShowDialog();
+        }
     }
 }

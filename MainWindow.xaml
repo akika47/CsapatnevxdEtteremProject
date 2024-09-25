@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EtteremProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="475" Width="300">
+        Title="MainWindow" Width ="300" Height="500"
+        >
+    <Border  Width="300" Height="455" BorderThickness="1" BorderBrush="Black">
+       
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -18,7 +21,6 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
 
 
         <Label Name="lblTitle" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Content="Login"></Label>
@@ -43,5 +45,8 @@
         <Label Visibility="Collapsed" Name="lblAlreadyHave" Grid.Row="8" VerticalAlignment="Top" HorizontalAlignment="Center">Already have an account?</Label>
         <Button Visibility="Collapsed" x:Name="btnAlreadyHave" Click="OpenLoginContext" Grid.Row="8" Height="20" Width="100" Foreground="CornflowerBlue" BorderBrush="CornflowerBlue" Background="White" BorderThickness="0 0 0 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10">Click here</Button>
 
+            <Button Click="asd">asd</Button>
+
     </Grid>
+    </Border>
 </Window>

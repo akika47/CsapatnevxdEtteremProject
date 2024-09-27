@@ -18,7 +18,8 @@ namespace EtteremProject
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private RestaurantContext _context;
+        Order orderWindow = new Order();
+        private RestaurantContext _context;
 		private const int HashSize = 256;
 		public MainWindow(RestaurantContext context)
 		{
@@ -26,6 +27,12 @@ namespace EtteremProject
 
 			_context = context;
 		}
+
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
 		// Registration
 		private void RegisterButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -43,8 +50,10 @@ namespace EtteremProject
 				// Registration successful, redirect to login or main page...
 				foreach (var item in _context.Users)
 				{
-					MessageBox.Show($"{item.Username} {item.Password}");
-				}
+					//MessageBox.Show($"{item.Username} {item.Password}");
+                    this.Close();
+                    orderWindow.ShowDialog();
+                }
 
 			}
 			else
@@ -70,7 +79,8 @@ namespace EtteremProject
 				var user = _context.Users.FirstOrDefault(u => u.Username == username);
 				if (user != null && VerifyPassword(password, user.Password))
 				{
-					//Success message later implement
+					this.Close();		
+					orderWindow.ShowDialog();
 				}
 				else
 				{
@@ -88,21 +98,52 @@ namespace EtteremProject
 		private bool IsValidInput(string username, string password)
 		{
 			// Check if username is not empty and has a minimum length of 3 characters
-			if (string.IsNullOrWhiteSpace(username) || username.Length < 3)
+			if (string.IsNullOrWhiteSpace(username))
 			{
+				MessageBox.Show("Nem adtál meg felhasználónevet!");
+				txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+
 				return false;
 			}
 
-			// Check if password is not empty and has a minimum length of 8 characters
-			if (string.IsNullOrWhiteSpace(password) || password.Length < 8)
+			if (username.Length < 3)
 			{
-				return false;
+				MessageBox.Show("A felhasználónévnek legalább 3 karakter hosszúnak kell lennie");
+                txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+
+                return false;
+			}
+
+			// Check if password is not empty and has a minimum length of 8 characters
+			if (string.IsNullOrWhiteSpace(password))
+			{
+				MessageBox.Show("Nem adtál meg jelszót!");
+                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+
+                return false;
+			}
+
+			if (password.Length < 8)
+			{
+				MessageBox.Show("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
+                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                return false;
+			}
+
+			if (password != txtConfirmPassword.Text && txtConfirmPassword.Visibility == Visibility.Visible) 
+			{
+				MessageBox.Show("A jelszó vagy a megerősítése téves!");
+                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+				txtConfirmPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                return false;
 			}
 
 			// Check if password contains at least one uppercase letter, one lowercase letter, and one digit
 			if (!password.Any(c => char.IsUpper(c)) || !password.Any(c => char.IsLower(c)) || !password.Any(c => char.IsDigit(c)))
 			{
-				return false;
+				MessageBox.Show("A jelszónak nagybetűs karaktert is klle tartalmaznia!");
+                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                return false;
 			}
 
 			// If all checks pass, input is valid
@@ -175,5 +216,53 @@ namespace EtteremProject
 			return inputHash.SequenceEqual(hash);
 		}
 
-	}
+        private void OpenRegisterContext(object sender, RoutedEventArgs e)
+        {
+			txtConfirmPassword.Visibility = Visibility.Visible;
+			lblConfirmPassword.Visibility = Visibility.Visible;
+
+			lblAlreadyHave.Visibility = Visibility.Visible;
+			btnAlreadyHave.Visibility = Visibility.Visible;
+
+			lblClickHere.Visibility = Visibility.Collapsed;
+			btnClickHere.Visibility = Visibility.Collapsed;
+
+			btnLogin.Visibility = Visibility.Collapsed;
+			btnRegister.Visibility = Visibility.Visible;
+
+			lblTitle.Content = "Register";
+
+        }
+
+        private void OpenLoginContext(object sender, RoutedEventArgs e)
+        {
+            txtConfirmPassword.Visibility = Visibility.Collapsed;
+            lblConfirmPassword.Visibility = Visibility.Collapsed;
+
+            lblAlreadyHave.Visibility = Visibility.Collapsed;
+            btnAlreadyHave.Visibility = Visibility.Collapsed;
+
+            lblClickHere.Visibility = Visibility.Visible;
+            btnClickHere.Visibility = Visibility.Visible;
+
+			btnRegister.Visibility= Visibility.Collapsed;
+			btnLogin.Visibility = Visibility.Visible;
+
+			lblTitle.Content = "Login";
+        }
+
+        private void asd(object sender, RoutedEventArgs e)
+        {
+			this.Close();
+			Order newpage = new Order();
+			newpage.ShowDialog();
+        }
+
+        private void RemoveErrorMarker(object sender, RoutedEventArgs e)
+        {
+			TextBox kuldoTxt = sender as TextBox;
+
+			kuldoTxt.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+    }
 }

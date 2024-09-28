@@ -19,7 +19,7 @@ namespace EtteremProject.Models
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-            optionsBuilder.UseSqlite("Data Source=restaurant.db");
+            optionsBuilder.UseSqlite("Data Source=\"C:\\Ákos\\Projects\\CsapatnevxdEtteremProject\\restaurant.db\"");
 		}
 	}
     public class Orders

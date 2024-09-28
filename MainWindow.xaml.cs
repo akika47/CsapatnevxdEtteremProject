@@ -19,7 +19,7 @@ namespace EtteremProject
 	public partial class MainWindow : Window
 	{
         Order orderWindow = new Order();
-        private RestaurantContext _context;
+		private RestaurantContext _context;
 		private const int HashSize = 256;
 		public MainWindow(RestaurantContext context)
 		{
@@ -50,7 +50,6 @@ namespace EtteremProject
 				// Registration successful, redirect to login or main page...
 				foreach (var item in _context.Users)
 				{
-					//MessageBox.Show($"{item.Username} {item.Password}");
                     this.Close();
                     orderWindow.ShowDialog();
                 }
@@ -71,13 +70,22 @@ namespace EtteremProject
 
 
 
+
 			// Validate input data...
 			if (IsValidInput(username, password))
 			{
 
 
 				var user = _context.Users.FirstOrDefault(u => u.Username == username);
-				if (user != null && VerifyPassword(password, user.Password))
+
+				if ((user != null && VerifyPassword(password, user.Password) && user.IsAdmin == true))
+				{
+					AdminPage adminPage = new AdminPage(_context);
+					this.Close();
+					adminPage.ShowDialog();
+	
+				}
+				else if (user != null && VerifyPassword(password, user.Password))
 				{
 					this.Close();		
 					orderWindow.ShowDialog();
@@ -251,18 +259,20 @@ namespace EtteremProject
 			lblTitle.Content = "Login";
         }
 
-        private void asd(object sender, RoutedEventArgs e)
-        {
+		private void asd(object sender, RoutedEventArgs e)
+		{
 			this.Close();
 			Order newpage = new Order();
 			newpage.ShowDialog();
-        }
+		}
 
-        private void RemoveErrorMarker(object sender, RoutedEventArgs e)
+		private void RemoveErrorMarker(object sender, RoutedEventArgs e)
         {
 			TextBox kuldoTxt = sender as TextBox;
 
 			kuldoTxt.BorderBrush = new SolidColorBrush(Colors.Black);
         }
+
+
     }
 }

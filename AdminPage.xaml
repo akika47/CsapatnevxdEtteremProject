@@ -7,6 +7,29 @@
         mc:Ignorable="d"
         Title="AdminPage" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGridIngredients" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" Margin="10" SelectionChanged="dataGridIngredients_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding StockAmount}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
+            <Label Content="Name:"/>
+            <TextBox x:Name="txtIngredientName" Width="200" Height="25" Margin="5"/>
+            <Label Content="StockAmount:"/>
+            <TextBox x:Name="txtIngredientStock" Width="200" Height="25" Margin="5"/>
+            <Button x:Name="btnAddIngredient" Content="Add Ingredient" Click="btnAddIngredient_Click" Width="100" Height="25" Margin="5"/>
+            <Button x:Name="btnDeleteIngredient" Content="Delete Ingredient" Click="btnDeleteIngredient_Click" Width="100" Height="25" Margin="5"/>
+            <Button x:Name="btnModifyIngredient" Content="Modify Ingredient" Click="btnModifyIngredient_Click" Width="100" Height="25" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>

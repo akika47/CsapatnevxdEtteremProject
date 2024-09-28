@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace EtteremProject.Models
 {
@@ -19,7 +21,9 @@ namespace EtteremProject.Models
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-            optionsBuilder.UseSqlite("Data Source=\"C:\\Ákos\\Projects\\CsapatnevxdEtteremProject\\restaurant.db\"");
+			string databasePath = Path.GetFullPath("restaurant.db");
+            MessageBox.Show(databasePath);
+			optionsBuilder.UseSqlite($"Data Source={databasePath}");
 		}
 	}
     public class Orders

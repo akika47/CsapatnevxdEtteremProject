@@ -121,8 +121,6 @@
                     VerticalAlignment="Bottom"
                     Margin="0 0 0 10">Click here</Button>
 
-            <Button Click="asd">OrderWindow (csak tesztkent)</Button>
-
         </Grid>
     </Border>
 

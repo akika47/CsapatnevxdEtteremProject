@@ -19,36 +19,32 @@ namespace EtteremProject
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        Order orderWindow = new Order();
+
 		private RestaurantContext _context;
+
 		private const int HashSize = 256;
 		public MainWindow(RestaurantContext context)
 		{
 			InitializeComponent();
 
 			_context = context;
+
 		}
 
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
 
 		// Registration
 		private void RegisterButton_Click(object sender, RoutedEventArgs e)
 		{
 			string username = txtUsername.Text;
 			string password = txtPassword.Text;
+			Order orderWindow = new Order(_context);
 
-
-			// Validate input data...
 			if (IsValidInput(username, password))
 			{
 
 				var user = new Users { Username = username, Password = HashPassword(password) };
 				_context.Users.Add(user);
 				_context.SaveChanges();
-				// Registration successful, redirect to login or main page...
 				foreach (var item in _context.Users)
 				{
                     this.Close();
@@ -58,7 +54,7 @@ namespace EtteremProject
 			}
 			else
 			{
-				// Display error message...
+				MessageBox.Show("Hiba történt a regisztrációban!");
 			}
 		}
 
@@ -67,12 +63,9 @@ namespace EtteremProject
 		{
 			string username = txtUsername.Text;
 			string password = txtPassword.Text;
+			Order orderWindow = new Order(_context);
 
 
-
-
-
-			// Validate input data...
 			if (IsValidInput(username, password))
 			{
 
@@ -84,29 +77,28 @@ namespace EtteremProject
 					AdminPage adminPage = new AdminPage(_context);
 					this.Close();
 					adminPage.ShowDialog();
-	
+
 				}
 				else if (user != null && VerifyPassword(password, user.Password))
 				{
-					this.Close();		
+					this.Close();
 					orderWindow.ShowDialog();
 				}
 				else
 				{
-					//Error message later implement
+					MessageBox.Show("Hiba történt a bejelentkezésben!");
 				}
 
 			}
 			else
 			{
-				//Error message later implement
+				MessageBox.Show("Hiba történt a bejelentkezésben!");
 			}
 		}
 
 		// Helper methods
 		private bool IsValidInput(string username, string password)
 		{
-			// Check if username is not empty and has a minimum length of 3 characters
 			if (string.IsNullOrWhiteSpace(username))
 			{
 				MessageBox.Show("Nem adtál meg felhasználónevet!");
@@ -123,7 +115,6 @@ namespace EtteremProject
                 return false;
 			}
 
-			// Check if password is not empty and has a minimum length of 8 characters
 			if (string.IsNullOrWhiteSpace(password))
 			{
 				MessageBox.Show("Nem adtál meg jelszót!");
@@ -147,21 +138,17 @@ namespace EtteremProject
                 return false;
 			}
 
-			// Check if password contains at least one uppercase letter, one lowercase letter, and one digit
 			if (!password.Any(c => char.IsUpper(c)) || !password.Any(c => char.IsLower(c)) || !password.Any(c => char.IsDigit(c)))
 			{
-				MessageBox.Show("A jelszónak nagybetűs karaktert is klle tartalmaznia!");
+				MessageBox.Show("A jelszónak tartalmaznia kell minimum 1 nagybetűs karaktert, 1 kisbetűs karaktert és 1 számot!");
                 txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
                 return false;
 			}
-
-			// If all checks pass, input is valid
 			return true;
 		}
 
 		private string HashPassword(string password)
 		{
-			// Use bcrypt to hash the password
 			var bcrypt = new BCryptPasswordEncoder();
 			return bcrypt.HashPassword(password);
 		}
@@ -173,32 +160,27 @@ namespace EtteremProject
 
 			public string HashPassword(string password)
 			{
-				// Generate a random salt
 				var salt = new byte[SaltSize];
 				using (var rng = RandomNumberGenerator.Create())
 				{
 					rng.GetBytes(salt);
 				}
 
-				// Hash the password using bcrypt
 				var hash = new byte[HashSize];
 				using (var bcrypt = new Rfc2898DeriveBytes(password, salt, 1000))
 				{
 					hash = bcrypt.GetBytes(HashSize);
 				}
 
-				// Convert the salt and hash to base64 strings
 				var saltBase64 = Convert.ToBase64String(salt);
 				var hashBase64 = Convert.ToBase64String(hash);
 
-				// Return the hashed password in the format "salt:hash"
 				return $"{saltBase64}:{hashBase64}";
 			}
 
 		}
 		private bool VerifyPassword(string inputPassword, string storedPassword)
 		{
-			// Split the stored password into salt and hash
 			var parts = storedPassword.Split(':');
 			if (parts.Length != 2)
 			{
@@ -208,20 +190,16 @@ namespace EtteremProject
 			var saltBase64 = parts[0];
 			var hashBase64 = parts[1];
 
-			// Convert the salt and hash back to byte arrays
 			var salt = Convert.FromBase64String(saltBase64);
 			var hash = Convert.FromBase64String(hashBase64);
 
-			// Declare the inputHash variable before the using statement
 			byte[] inputHash;
 
-			// Hash the input password using the same salt and bcrypt algorithm
 			using (var bcrypt = new Rfc2898DeriveBytes(inputPassword, salt, 1000))
 			{
 				inputHash = bcrypt.GetBytes(HashSize);
 			}
 
-			// Compare the input hash with the stored hash
 			return inputHash.SequenceEqual(hash);
 		}
 
@@ -259,13 +237,6 @@ namespace EtteremProject
 
 			lblTitle.Content = "Login";
         }
-
-		private void asd(object sender, RoutedEventArgs e)
-		{
-			this.Close();
-			Order newpage = new Order();
-			newpage.ShowDialog();
-		}
 
         private void RemoveErrorMarker(object sender, RoutedEventArgs e)
         {

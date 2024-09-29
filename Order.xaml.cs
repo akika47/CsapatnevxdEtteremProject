@@ -106,6 +106,7 @@ namespace EtteremProject
 
 		private void btnCheckout_Click(object sender, RoutedEventArgs e)
 		{
+			bool canCheckout = true;
 			foreach (var item in DishQunatitites)
 			{
 				var meal = _context.Meals.FirstOrDefault(m => m.Name == item.Key);
@@ -115,14 +116,40 @@ namespace EtteremProject
 					foreach (var mealIngredient in mealIngredients)
 					{
 						var ingredient = _context.Ingredients.FirstOrDefault(i => i.Id == mealIngredient.IngredientId);
-						ingredient.StockAmount -= mealIngredient.Quantity * item.Value;
+						if (ingredient.StockAmount - mealIngredient.Quantity * item.Value < 0)
+						{
+							canCheckout = false;
+							MessageBox.Show("Not enough ingredients to fulfill the order.");
+							break;
+						}
 					}
+				}
+				if (!canCheckout)
+				{
+					break;
 				}
 			}
 
-			_context.SaveChanges();
-			DishQunatitites.Clear();
-			lbCart.Items.Clear();
+			if (canCheckout)
+			{
+				foreach (var item in DishQunatitites)
+				{
+					var meal = _context.Meals.FirstOrDefault(m => m.Name == item.Key);
+					if (meal != null)
+					{
+						var mealIngredients = _context.MealIngredients.Where(mi => mi.MealId == meal.Id).ToList();
+						foreach (var mealIngredient in mealIngredients)
+						{
+							var ingredient = _context.Ingredients.FirstOrDefault(i => i.Id == mealIngredient.IngredientId);
+							ingredient.StockAmount -= mealIngredient.Quantity * item.Value;
+						}
+					}
+				}
+
+				_context.SaveChanges();
+				DishQunatitites.Clear();
+				lbCart.Items.Clear();
+			}
 		}
 	}
 }

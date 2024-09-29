@@ -74,7 +74,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish1asdasdasd"
+            <StackPanel x:Name="Margherita"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"
@@ -138,7 +138,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish2"
+            <StackPanel x:Name="Pepperoni"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"
@@ -202,7 +202,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish3"
+            <StackPanel x:Name="BBQChicken"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"
@@ -266,7 +266,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish4"
+            <StackPanel x:Name="Hawaiian"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"
@@ -330,7 +330,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish5"
+            <StackPanel x:Name="Vegetarian"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"
@@ -394,7 +394,7 @@
                 Height="40"
                 Width="175"
                 VerticalAlignment="Bottom">
-            <StackPanel x:Name="Dish6"
+            <StackPanel x:Name="MeatLover"
                         Grid.Row="1"
                         VerticalAlignment="center"
                         Height="40"

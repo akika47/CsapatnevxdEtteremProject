@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace EtteremProject
 {
@@ -266,7 +267,7 @@ namespace EtteremProject
 			newpage.ShowDialog();
 		}
 
-		private void RemoveErrorMarker(object sender, RoutedEventArgs e)
+        private void RemoveErrorMarker(object sender, RoutedEventArgs e)
         {
 			TextBox kuldoTxt = sender as TextBox;
 

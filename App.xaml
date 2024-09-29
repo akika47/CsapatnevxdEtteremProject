@@ -4,6 +4,144 @@
              xmlns:local="clr-namespace:EtteremProject"
 >
     <Application.Resources>
-         
+        <Style TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="#EDE0D4" />
+            <Setter Property="Foreground"
+                    Value="#7F5539" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden">
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused"
+                                     Value="true">
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="#7F5539">
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused"
+                                     Value="False">
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="Transparent">
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background"
+                    Value="#9C6644" />
+            <Setter Property="Foreground"
+                    Value="#EDE0D4" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="true">
+                                <Setter Property="Background"
+                                        TargetName="Border"
+                                        Value="#7F5539" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground"
+                    Value="#7F5539"/>
+        </Style>
+
+        <Style TargetType="{x:Type Label}" x:Key="LabelCounter">
+            <Setter Property="Foreground"
+                    Value="#7F5539" />
+            <Setter Property="Background"
+                    Value="#EDE0D4" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background"
+                                Value="#9C6644" />
+                        <Setter Property="Foreground"
+                                Value="#EDE0D4" />
+                        <!--<Setter Property="Width"
+                                Value="100" />
+                        <Setter Property="Height"
+                                Value="25" />-->
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#E6CCB2" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background"
+                                Value="#B08968"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#E6CCB2" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#7F5539" />
+                                <Setter Property="Foreground"
+                                        Value="#EDE0D4" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Foreground"
+                    Value="#7F5539" />
+        </Style>
     </Application.Resources>
 </Application>

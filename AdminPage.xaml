@@ -5,31 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EtteremProject"
         mc:Ignorable="d"
-        Title="AdminPage" Height="450" Width="800">
+        Title="AdminPage"
+        Height="450"
+        Width="800"
+        FontFamily="Arial"
+        Background="#DDB892">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <DataGrid x:Name="dataGridIngredients" AutoGenerateColumns="False" Grid.Column="0" Grid.Row="0" Margin="10" SelectionChanged="dataGridIngredients_SelectionChanged">
+        <DataGrid x:Name="dataGridIngredients"
+                  AutoGenerateColumns="False"
+                  Grid.Column="0"
+                  Grid.Row="0"
+                  Margin="10"
+                  Background="#EDE0D4"
+                  BorderThickness="0"
+                  SelectionChanged="dataGridIngredients_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Stock" Binding="{Binding StockAmount}"/>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Stock"
+                                    Binding="{Binding StockAmount}" />
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10">
-            <Label Content="Name:"/>
-            <TextBox x:Name="txtIngredientName" Width="200" Height="25" Margin="5"/>
-            <Label Content="StockAmount:"/>
-            <TextBox x:Name="txtIngredientStock" Width="200" Height="25" Margin="5"/>
-            <Button x:Name="btnAddIngredient" Content="Add Ingredient" Click="btnAddIngredient_Click" Width="100" Height="25" Margin="5"/>
-            <Button x:Name="btnDeleteIngredient" Content="Delete Ingredient" Click="btnDeleteIngredient_Click" Width="100" Height="25" Margin="5"/>
-            <Button x:Name="btnModifyIngredient" Content="Modify Ingredient" Click="btnModifyIngredient_Click" Width="100" Height="25" Margin="5"/>
+        <StackPanel Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="10">
+
+            <Label Content="Name:" />
+            <TextBox x:Name="txtIngredientName"
+                     Width="200"
+                     Height="30"
+                     Margin="5"
+                     FontSize="15"
+                     VerticalContentAlignment="Center"/>
+
+
+            <Label Content="Stock Amount:" />
+            <TextBox x:Name="txtIngredientStock"
+                     Width="200"
+                     Height="30"
+                     Margin="5"
+                     FontSize="15"
+                     VerticalContentAlignment="Center" />
+            
+
+            <Button x:Name="btnAddIngredient"
+                    Content="Add Ingredient"
+                    Click="btnAddIngredient_Click"
+                    Width="100"
+                    Height="25"
+                    Margin="5" />
+            <Button x:Name="btnDeleteIngredient"
+                    Content="Delete Ingredient"
+                    Click="btnDeleteIngredient_Click"
+                    Width="100"
+                    Height="25"
+                    Margin="5" />
+            <Button x:Name="btnModifyIngredient"
+                    Content="Modify Ingredient"
+                    Click="btnModifyIngredient_Click"
+                    Width="100"
+                    Height="25"
+                    Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -22,7 +22,6 @@ namespace EtteremProject.Models
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			string databasePath = Path.GetFullPath("restaurant.db");
-            MessageBox.Show(databasePath);
 			optionsBuilder.UseSqlite($"Data Source={databasePath}");
 		}
 	}

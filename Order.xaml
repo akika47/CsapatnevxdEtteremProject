@@ -33,7 +33,7 @@
         <Label Grid.ColumnSpan="3"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               FontSize="35">cim vagy valami random szoveg</Label>
+               FontSize="35">Pizza Rendelés</Label>
 
         <Button x:Name="btnLogin"
                 Click="OpenLoginWindow"
@@ -63,7 +63,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/margherita.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="1"
                 Background="LightGray"
@@ -126,7 +126,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/pepperoni.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="1"
                 Grid.Column="1"
@@ -190,7 +190,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/bbqChicken.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="1"
                 Grid.Column="2"
@@ -254,7 +254,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/hawaiian.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="2"
                 Grid.Column="0"
@@ -318,7 +318,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/vegetarian.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="2"
                 Grid.Column="1"
@@ -382,7 +382,7 @@
                 Margin="0 10 0 0"
                 Height="180"
                 Width="175">
-            <!--IMAGE-->
+            <Image Source="Images/meatLover.jpg" Stretch="UniformToFill"/>
         </Border>
         <Border Grid.Row="2"
                 Grid.Column="2"
@@ -435,25 +435,12 @@
                 </Button>
             </StackPanel>
         </Border>
-
-        <Label FontSize="20"
-               Grid.Row="3"
-               Grid.Column="1"
-               Grid.ColumnSpan="2"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center">Valami footer</Label>
-
-        <Button x:Name="btnAdmin"
-                Visibility="Collapsed"
-                Click="btnAdmin_Click"
-                Grid.Row="3"
-                Height="55"
-                Width="150"
-                FontSize="20">Admin</Button>
         <Button Grid.Column="3"
                 Grid.Row="3"
                 Height="55"
                 Width="200"
-                FontSize="20">Checkout</Button>
+                FontSize="20"
+                Click="btnCheckout_Click"
+                >Checkout</Button>
     </Grid>
 </Window>

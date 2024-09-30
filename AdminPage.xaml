@@ -39,6 +39,11 @@
         <StackPanel Grid.Column="1"
                     Grid.Row="0"
                     Margin="10">
+            <Button x:Name="btnLogin"
+                Click="OpenLoginWindow"
+                Grid.Column="3"
+                Width="180"
+                Height="80">Log Out</Button>
 
             <Label Content="Name:" />
             <TextBox x:Name="txtIngredientName"

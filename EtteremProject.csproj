@@ -22,4 +22,10 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Images\bbqChicken.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

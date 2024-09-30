@@ -72,5 +72,12 @@ namespace EtteremProject
 				txtIngredientStock.Text = selectedIngredient.StockAmount.ToString();
 			}
 		}
-	}
+        private void OpenLoginWindow(object sender, RoutedEventArgs e)
+        {
+            MainWindow ujMain = new MainWindow(_context);
+            this.Close();
+            ujMain.ShowDialog();
+
+        }
+    }
 }

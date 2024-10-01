@@ -52,13 +52,16 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="15">Password</Label>
-            <TextBox x:Name="txtPassword"
+            <PasswordBox x:Name="txtPassword"
                      VerticalContentAlignment="Center"
                      GotFocus="RemoveErrorMarker"
                      Grid.Row="4"
                      Width="200"
                      Height="30"
-                     FontSize="15"></TextBox>
+                     FontSize="15"
+                     PasswordChar="*"
+                     BorderBrush="Black"
+                     BorderThickness="1"></PasswordBox>
 
 
             <Label Name="lblConfirmPassword"
@@ -67,14 +70,15 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="15">Confirm Password</Label>
-            <TextBox Visibility="Collapsed"
+            <PasswordBox Visibility="Collapsed"
                      VerticalContentAlignment="Center"
                      GotFocus="RemoveErrorMarker"
                      x:Name="txtConfirmPassword"
                      Grid.Row="6"
                      Width="200"
                      Height="40"
-                     FontSize="15"></TextBox>
+                     FontSize="15"
+                     PasswordChar="*"></PasswordBox>
 
 
             <Button x:Name="btnLogin"

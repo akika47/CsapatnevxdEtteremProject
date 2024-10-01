@@ -36,7 +36,7 @@ namespace EtteremProject
 		private void RegisterButton_Click(object sender, RoutedEventArgs e)
 		{
 			string username = txtUsername.Text;
-			string password = txtPassword.Text;
+			string password = txtPassword.Password;
 			Order orderWindow = new Order(_context);
 
 			if (IsValidInput(username, password))
@@ -62,7 +62,7 @@ namespace EtteremProject
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
 			string username = txtUsername.Text;
-			string password = txtPassword.Text;
+			string password = txtPassword.Password;
 			Order orderWindow = new Order(_context);
 
 
@@ -99,52 +99,76 @@ namespace EtteremProject
 		// Helper methods
 		private bool IsValidInput(string username, string password)
 		{
+			string usernameErrorMessage = "";
+			string passwordErrorMessage = "";
+
+			bool errorWithUsername = false;
+			bool errorWithPassword = false;
+
+
 			if (string.IsNullOrWhiteSpace(username))
 			{
-				MessageBox.Show("Nem adtál meg felhasználónevet!");
-				txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
-
-				return false;
+				usernameErrorMessage = "Nem adtál meg felhasználónevet!";
+				errorWithUsername = true;
 			}
 
 			if (username.Length < 3)
 			{
-				MessageBox.Show("A felhasználónévnek legalább 3 karakter hosszúnak kell lennie");
-                txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+				usernameErrorMessage = "A felhasználónévnek legalább 3 karakter hosszúnak kell lennie";
+				errorWithUsername = true;
 
-                return false;
 			}
+
 
 			if (string.IsNullOrWhiteSpace(password))
 			{
-				MessageBox.Show("Nem adtál meg jelszót!");
-                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-
-                return false;
+				passwordErrorMessage = "Nem adtál meg jelszót!";
+				errorWithPassword = true;
 			}
 
 			if (password.Length < 8)
 			{
-				MessageBox.Show("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
-                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-                return false;
+				passwordErrorMessage = "A jelszónak legalább 8 karakter hosszúnak kell lennie!";
+				errorWithPassword = true;
 			}
 
-			if (password != txtConfirmPassword.Text && txtConfirmPassword.Visibility == Visibility.Visible) 
+			if (password != txtConfirmPassword.Password && txtConfirmPassword.Visibility == Visibility.Visible)
 			{
-				MessageBox.Show("A jelszó vagy a megerősítése téves!");
-                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-				txtConfirmPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-                return false;
+				passwordErrorMessage = "A jelszó vagy a megerősítése téves!";
+				errorWithPassword = true;
 			}
 
 			if (!password.Any(c => char.IsUpper(c)) || !password.Any(c => char.IsLower(c)) || !password.Any(c => char.IsDigit(c)))
 			{
-				MessageBox.Show("A jelszónak tartalmaznia kell minimum 1 nagybetűs karaktert, 1 kisbetűs karaktert és 1 számot!");
-                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
-                return false;
+				passwordErrorMessage = "A jelszónak tartalmaznia kell minimum 1 nagybetűs karaktert, 1 kisbetűs karaktert és 1 számot!";
+				errorWithPassword = true;
+				txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
 			}
-			return true;
+
+
+			if (errorWithUsername && errorWithPassword)
+			{
+				txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+				txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+				MessageBox.Show($"{usernameErrorMessage}\n \n{passwordErrorMessage}");
+                return false;
+            }
+            else if (errorWithPassword)
+			{
+				txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+				MessageBox.Show(passwordErrorMessage);
+                return false;
+            }
+			else if (errorWithUsername)
+			{
+                txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+				MessageBox.Show(usernameErrorMessage);
+				return false;
+            }
+			else
+			{
+                return true;
+            }               
 		}
 
 		private string HashPassword(string password)
@@ -240,9 +264,17 @@ namespace EtteremProject
 
         private void RemoveErrorMarker(object sender, RoutedEventArgs e)
         {
-			TextBox kuldoTxt = sender as TextBox;
-
-			kuldoTxt.BorderBrush = new SolidColorBrush(Colors.Black);
+			if (sender is TextBox)
+			{
+				TextBox xd = sender as TextBox;
+				xd.BorderBrush = new SolidColorBrush(Colors.Black);
+            }
+			else 
+			{ 
+				PasswordBox xd = sender as PasswordBox;
+                xd.BorderBrush = new SolidColorBrush(Colors.Black);
+            }
+			
         }
 
 

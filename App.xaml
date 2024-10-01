@@ -43,6 +43,45 @@
             </Setter>
         </Style>
 
+        <Style TargetType="PasswordBox">
+            <Setter Property="Background"
+                    Value="#EDE0D4" />
+            <Setter Property="Foreground"
+                    Value="#7F5539" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden">
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused"
+                                     Value="true">
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="#7F5539">
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsFocused"
+                                     Value="False">
+                                <Setter Property="BorderBrush"
+                                        TargetName="Border"
+                                        Value="Transparent">
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Button">
             <Setter Property="Background"
                     Value="#9C6644" />

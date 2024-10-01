@@ -1,0 +1,11 @@
+imgMargherita.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\margherita.jpg")));
+
+imgBBQChicken.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\bbqChicken.jpg")));
+
+imghawaiian.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\hawaiian.jpg")));
+
+imgPepperoni.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\pepperoni.jpg")));
+
+imgVegetarian.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\vegetarian.jpg")));
+
+imgMeatLover.Source = new BitmapImage(new Uri(System.IO.Path.GetFullPath("Images\\meatLover.jpg")));
